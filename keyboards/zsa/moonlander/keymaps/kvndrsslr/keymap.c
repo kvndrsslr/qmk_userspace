@@ -28,6 +28,8 @@ const uint32_t PROGMEM unicode_map[] = {
 #define MUC_OUML UP(OU, OOU)
 #define MUC_UUML UP(UU, UUU)
 
+#define MTEAMS LSFT(LCA(KC_M))
+
 enum layers {
     UBSE,
     USYM,
@@ -46,7 +48,7 @@ enum custom_keycodes {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [UBSE] = LAYOUT_moonlander(
-      KC_EQUAL,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           MO(SYMB) ,                                          _______       , KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
+      KC_EQUAL,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           MO(SYMB) ,                                          MTEAMS       , KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
     KC_ESCAPE,      KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           MO(UFNK),                                          MO(UFNK),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_ESCAPE,
     KC_BACKSPACE,      LSFT_T(KC_A),           LALT_T(KC_S),   LCTL_T(KC_D),   LGUI_T(KC_F),   LT(UGER,KC_G), MO(USYM),                                          MO(USYM),   LT(UGER,KC_H),     RGUI_T(KC_J),   RCTL_T(KC_K),   RALT_T(KC_L),   RSFT_T(KC_SEMICOLON),      KC_DELETE,
     KC_LSFT,      KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                                             KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RSFT,
