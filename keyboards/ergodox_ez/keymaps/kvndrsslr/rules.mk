@@ -10,3 +10,4 @@ UNICODE_ENABLE = no
 UNICODEMAP_ENABLE = yes
 # enabled swap hands code
 SWAP_HANDS_ENABLE = yes
+COMBO_ENABLE = yes

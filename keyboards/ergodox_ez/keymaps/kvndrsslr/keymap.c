@@ -1,59 +1,13 @@
 #include QMK_KEYBOARD_H
-#include "version.h"
+#include "kvndrsslr.c"
 
-enum unicode_names {
-    AU,
-    AAU,
-    OU,
-    OOU,
-    UU,
-    UUU,
-    SZ,
-    SSZ
-};
-
-const uint32_t PROGMEM unicode_map[] = {
-    [AU]  = 0x00e4,
-    [AAU] = 0x00c4,
-    [OU]  = 0x00f6,
-    [OOU] = 0x00d6,
-    [UU]  = 0x00fc,
-    [UUU] = 0x00dc,
-    [SZ]  = 0x00df,
-    [SSZ] = 0x1e9e
-};
-
-#define MUC_SZ   UP(SZ, SSZ)
-#define MUC_AUML UP(AU, AAU)
-#define MUC_OUML UP(OU, OOU)
-#define MUC_UUML UP(UU, UUU)
-
-enum layers {
-    UBSE,
-    USYM,
-    UGER,
-    UFNK,
-    GAME,
-};
-
-enum custom_keycodes {
-    VRSN = SAFE_RANGE,
-};
-
+#define LAYOUT_ergodox_pretty_wrapper(...) LAYOUT_ergodox_pretty(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [UBSE] = LAYOUT_ergodox_pretty(
-    KC_EQUAL,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           TG(GAME),                                          _______       , KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
-    KC_ESCAPE,      KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           MO(UFNK),                                          MO(UFNK),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_ESCAPE,
-    KC_BACKSPACE,      LSFT_T(KC_A),           LALT_T(KC_S),   LCTL_T(KC_D),   LGUI_T(KC_F),   LT(UGER,KC_G),                                                                     LT(UGER,KC_H),     RGUI_T(KC_J),   RCTL_T(KC_K),   RALT_T(KC_L),   RSFT_T(KC_SEMICOLON),      KC_DELETE,
-    KC_LSFT,      KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           MO(USYM),                                          MO(USYM),          KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RSFT,
-    OSM(MOD_HYPR),  OSM(MOD_MEH),   KC_BACKSLASH,      KC_GRAVE,       SH_T(KC_QUOTE),                                                                                                       KC_LEFT_BRACKET,    KC_RIGHT_BRACKET,    _______       , OSM(MOD_MEH),   OSM(MOD_HYPR),
-                                                                                                    LGUI(KC_SPACE), _______       , _______       , _______       ,
-                                                                                                                    _______       , _______       ,
-                                                                                    LT(USYM,KC_SPACE),       KC_TAB,         _______       ,          QK_BOOT,          KC_TAB,         KC_ENTER
-  ),
+  [UBSE] = LAYOUT_ergodox_pretty_wrapper(HRM(__BASE__)),
+  [UQGM] = LAYOUT_ergodox_pretty_wrapper(HRM(__QGML__)),
   [USYM] = LAYOUT_ergodox_pretty(
-    VRSN,       _______       ,           _______       ,           _______       ,           _______       ,           _______       ,           _______       ,                                 _______       , _______       , _______       , _______       , _______       , _______       , _______       ,
+    _______,       _______       ,           _______       ,           _______       ,           _______       ,           _______       ,           _______       ,                                 _______       , _______       , _______       , _______       , _______       , _______       , _______       ,
     _______       , _______       ,           _______       ,           _______       ,           _______       ,           _______       ,           _______       ,                                 _______       , KC_MS_WH_LEFT,  KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_WH_RIGHT, _______       , _______       ,
     _______       ,      _______       ,      _______       ,   _______       ,  _______       ,   _______       ,                                                                     KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_MS_BTN3,     _______       ,
     _______       , _______       , _______       , _______       ,   _______       ,      _______       ,           _______       ,                                 _______       , KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    _______       , _______       ,
@@ -96,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // [6] = LAYOUT_ergodox_pretty(
   //   _______       , _______       , _______       , _______       , _______       , _______       , _______       ,                                 _______       , _______       , _______       , _______       , _______       , _______       , _______       ,
   //   _______       , _______       , _______       , _______       , _______       , _______       , _______       ,                                 _______       , _______       , _______       , ST_MACRO_7,     _______       , _______       , _______       ,
-  //   _______       , _______       , ST_MACRO_6,     _______       , _______       , _______       ,                                                                 _______       , ST_MACRO_8,     _______       , ST_MACRO_9,     _______       , _______       ,
+  //   _______       , _______       , ST_MACRO_6,     _______       , _______       , _______       ,                                                                 _______       , ST_MACRO_8,     _______       , ,     _______       , _______       ,
   //   _______       , _______       , _______       , _______       , _______       , _______       , _______       ,                                 _______       , _______       , _______       , _______       , _______       , _______       , _______       ,
   //   _______       , _______       , _______       , _______       , _______       ,                                                                                                 _______       , _______       , _______       , _______       , _______       ,
   //                                                                                                   _______       , _______       , _______       , _______       ,
@@ -154,18 +108,6 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
     {{0, 0}, {1, 0}, {2, 0}, {3, 0}, {4, 0}, {5, 0}},
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        switch (keycode) {
-        case VRSN:
-            SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-            return false;
-        }
-    }
-    return true;
-}
-
-
 layer_state_t layer_state_set_user(layer_state_t state) {
   uint8_t layer = biton32(state);
   ergodox_board_led_off();
@@ -204,7 +146,3 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   }
   return state;
 };
-
-// void matrix_init_user(void) {
-//     set_unicode_input_mode(UC_MAC);
-// };
