@@ -91,7 +91,7 @@ enum unicode_names {
 #define _____________CARPLAX_QGMLWY_L3_____________       KC_Z,    KC_X,    KC_C,    KC_V,    KC_J
 
 #define _____________CARPLAX_QGMLWY_R1_____________       KC_Y,    KC_F,    KC_U,    KC_B,    KC_SCLN
-#define _____________CARPLAX_QGMLWY_R2_____________       KC_I,    KC_A,    KC_E,    KC_O,    KC_H,
+#define _____________CARPLAX_QGMLWY_R2_____________       KC_I,    KC_A,    KC_E,    KC_O,    KC_H
 #define _____________CARPLAX_QGMLWY_R3_____________       KC_K,    KC_P,    KC_COMM, KC_DOT,  KC_SLSH
 
 #define ___________________BLANK___________________       _______, _______, _______, _______, _______
@@ -107,7 +107,7 @@ enum unicode_names {
     KC_ESC , _________________QWERTY_L1_________________, XXXXXXX, XXXXXXX, _________________QWERTY_R1_________________, KC_ESC , \
     KC_BSPC, _________________QWERTY_L2_________________,                   _________________QWERTY_R2_________________, KC_DEL , \
     KC_LSFT, _________________QWERTY_L3_________________, XXXXXXX, XXXXXXX, _________________QWERTY_R3_________________, KC_RSFT, \
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX                                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
                                                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                              \
                                                           XXXXXXX, XXXXXXX,                                                       \
                                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -117,7 +117,7 @@ enum unicode_names {
     KC_ESC , _____________CARPLAX_QGMLWY_L1_____________, XXXXXXX, XXXXXXX, _____________CARPLAX_QGMLWY_R1_____________, KC_ESC , \
     KC_BSPC, _____________CARPLAX_QGMLWY_L2_____________,                   _____________CARPLAX_QGMLWY_R2_____________, KC_DEL , \
     KC_LSFT, _____________CARPLAX_QGMLWY_L3_____________, XXXXXXX, XXXXXXX, _____________CARPLAX_QGMLWY_R3_____________, KC_RSFT, \
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX                                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
                                                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                              \
                                                           XXXXXXX, XXXXXXX,                                                       \
                                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX

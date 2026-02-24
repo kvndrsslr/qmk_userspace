@@ -8,3 +8,4 @@
 # enable unicode maps for umlauts
 UNICODE_ENABLE = no
 UNICODEMAP_ENABLE = yes
+AUDIO_ENABLE = no
