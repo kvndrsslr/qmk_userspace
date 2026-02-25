@@ -103,14 +103,14 @@ enum unicode_names {
 
 
 #define __BASE__ \
-    KC_EQL , ________________NUMBER_LEFT________________, XXXXXXX, XXXXXXX, ________________NUMBER_RIGHT_______________, KC_MINS, \
-    KC_ESC , _________________QWERTY_L1_________________, XXXXXXX, XXXXXXX, _________________QWERTY_R1_________________, KC_ESC , \
+    KC_EQL , ________________NUMBER_LEFT________________, TG(GAME), XXXXXXX, ________________NUMBER_RIGHT_______________, KC_MINS, \
+    KC_ESC , _________________QWERTY_L1_________________, MO(UFNK), MO(UFNK), _________________QWERTY_R1_________________, KC_ESC , \
     KC_BSPC, _________________QWERTY_L2_________________,                   _________________QWERTY_R2_________________, KC_DEL , \
-    KC_LSFT, _________________QWERTY_L3_________________, XXXXXXX, XXXXXXX, _________________QWERTY_R3_________________, KC_RSFT, \
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-                                                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                              \
-                                                          XXXXXXX, XXXXXXX,                                                       \
-                                        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    KC_LSFT, _________________QWERTY_L3_________________, MO(USYM), MO(USYM), _________________QWERTY_R3_________________, KC_RSFT, \
+    OSM(MOD_HYPR), OSM(MOD_MEH), KC_BACKSLASH, KC_GRAVE, SH_T(KC_QUOTE),                                     KC_LEFT_BRACKET, KC_RIGHT_BRACKET, XXXXXXX, OSM(MOD_MEH), OSM(MOD_HYPR), \
+                                              LGUI(KC_SPACE), XXXXXXX, XXXXXXX, LGUI(KC_SPACE),                                              \
+                                                          XXXXXXX, KC_A,                                                       \
+                         LT(USYM,KC_SPACE), KC_TAB, LGUI(KC_SPACE), QK_BOOT, KC_TAB, KC_ENTER
 
 #define __QGML__ \
     KC_EQL , ________________NUMBER_LEFT________________, XXXXXXX, XXXXXXX, ________________NUMBER_RIGHT_______________, KC_MINS, \
