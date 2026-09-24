@@ -86,6 +86,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+/* Layer taps (space for the mouse layer, G and H for the umlauts) keep their old
+ * behaviour: they may be held in a chord with either hand. Chordal Hold exists
+ * to keep home row rolls from firing modifiers, and a layer tap is always
+ * deliberate, so the layer-tap keys are exempt from the opposite hands rule.
+ * Rolling through G or H as letters is unaffected: a tap is still settled when
+ * the key is released within the tapping term. */
+#if defined(CHORDAL_HOLD)
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+    if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
+        return true; // may be held, whichever hand the other key is on
+    }
+    return get_chordal_hold_default(tap_hold_record, other_record);
+}
+#endif
+
+/* Flow Tap must not swallow a layer tap that follows another key while typing:
+ * holding space or G right after a letter has to keep working. The home row
+ * mod-taps keep Flow Tap, which is what removes their input lag. */
+#if defined(FLOW_TAP_TERM)
+uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
+    if (IS_QK_LAYER_TAP(keycode)) {
+        return 0; // no Flow Tap on layer taps
+    }
+    if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
+        return FLOW_TAP_TERM;
+    }
+    return 0;
+}
+#endif
+
 /* Per-key tapping term: the Shift home row mods get a shorter term so that
  * deliberately holding one for Shift engages faster. Rolls that must not fire a
  * modifier are handled by Chordal Hold, not by the timeout. */
