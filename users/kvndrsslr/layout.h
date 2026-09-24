@@ -256,7 +256,7 @@ enum layers {
     _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______,                         \
     _______, KC_AMPR, KC_1, KC_2, KC_3, KC_BSLS, _______,                                  \
     /* l28-l32 | r28-r32 */                                                               \
-    EE_CLR, _______, _______, AUX_RGB(RM_SPDD), AUX_RGB(RM_SPDU),                           \
+    EE_CLR, HRM_TIMELESS, _______, AUX_RGB(RM_SPDD), AUX_RGB(RM_SPDU),                       \
     _______, KC_DOT, KC_0, KC_EQL, _______,                                                \
     /* l33, le1, re1, r33 */                                                              \
     AUX_RGB(RM_NEXT), TOGGLE_LAYER_COLOR, _______, AUX_RGB(RM_TOGG),                       \

@@ -25,7 +25,18 @@ enum custom_keycodes {
     UM_OE,             // ö, Ö with shift
     UM_UE,             // ü, Ü with shift
     UM_SZ,             // ß
+    HRM_TIMELESS,      // toggle Chordal Hold + Flow Tap for the home row mods
 };
+
+/* Chordal Hold's opposite hands rule and Flow Tap change how the home row
+ * mod-taps feel, so they are opt-in: off after a fresh flash, flipped with one
+ * key, and the choice is remembered in user EEPROM. The layer taps are exempt
+ * from both either way. */
+static bool timeless_hrm;
+
+void keyboard_post_init_user(void) {
+    timeless_hrm = eeconfig_read_user() & 1;
+}
 
 /* Send the umlauts as macOS option key sequences instead of through the unicode
  * map: "option+u" is the diaeresis dead key and "option+s" is sharp s, so no
@@ -82,6 +93,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case UM_SZ:
             send_sharp_s();
             return false;
+        case HRM_TIMELESS: {
+            timeless_hrm       = !timeless_hrm;
+            uint32_t user_conf = eeconfig_read_user();
+            user_conf          = timeless_hrm ? (user_conf | 1u) : (user_conf & ~1u);
+            eeconfig_update_user(user_conf);
+            return false;
+        }
     }
     return true;
 }
@@ -94,6 +112,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
  * the key is released within the tapping term. */
 #if defined(CHORDAL_HOLD)
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+    if (!timeless_hrm) {
+        return true; // opposite hands rule off: plain Permissive Hold
+    }
     if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
         return true; // may be held, whichever hand the other key is on
     }
@@ -106,6 +127,9 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
  * mod-taps keep Flow Tap, which is what removes their input lag. */
 #if defined(FLOW_TAP_TERM)
 uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
+    if (!timeless_hrm) {
+        return 0; // Flow Tap off with the rest of the timeless options
+    }
     if (IS_QK_LAYER_TAP(keycode)) {
         return 0; // no Flow Tap on layer taps
     }
