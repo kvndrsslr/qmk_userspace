@@ -5,9 +5,7 @@
 # LTO_ENABLE = yes
 # CONSOLE_ENABLE = no
 # COMMAND_ENABLE = no
-# enable unicode maps for umlauts
-UNICODE_ENABLE = no
-UNICODEMAP_ENABLE = yes
+# umlauts are macros (macOS option sequences), no unicode map needed
 AUDIO_ENABLE = no
 # combos from the forked userspace (combos.inc)
 COMBO_ENABLE = yes

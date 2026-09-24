@@ -46,26 +46,12 @@ enum layers {
     GAME, // plain keys for gaming
 };
 
-// ------------------------------- unicode ------------------------------------
+// ------------------------------ keycode notes --------------------------------
 
-enum unicode_names {
-    AU,
-    AAU,
-    OU,
-    OOU,
-    UU,
-    UUU,
-    SZ,
-    SSZ
-};
-
-#define MUC_SZ   UP(SZ, SSZ)
-#define MUC_AUML UP(AU, AAU)
-#define MUC_OUML UP(OU, OOU)
-#define MUC_UUML UP(UU, UUU)
-
-// unicode_map[] itself lives in layout.c, which kvndrsslr.c includes once.
-
+/* The umlauts are macro keycodes defined in kvndrsslr.c: macOS option key
+ * sequences ("option+u" for the diaeresis, "option+s" for sharp s), so no
+ * unicode map and no Unicode Hex Input source is involved. Shift (or caps lock)
+ * on those keys gives the capital. */
 #define MTEAMS LSFT(LCA(KC_M)) // mute in MS Teams
 
 // --------------------------- board differences -------------------------------
@@ -214,9 +200,9 @@ enum unicode_names {
     _______, _______, _______, _______, _______, _______, _______,                         \
     /* l08-l14 | r08-r14 */                                                               \
     _______, _______, _______, _______, _______, _______, _______,                         \
-    _______, _______, MUC_UUML, _______, MUC_OUML, _______, _______,                       \
+    _______, _______, UM_UE, _______, UM_OE, _______, _______,                             \
     /* l15-l20 | r15-r20 */                                                               \
-    _______, MUC_AUML, MUC_SZ, _______, _______, _______,                                 \
+    _______, UM_AE, UM_SZ, _______, _______, _______,                                     \
     _______, _______, _______, _______, _______, _______,                                 \
     /* l21-l27 | r21-r27 */                                                               \
     _______, _______, _______, _______, _______, _______, _______,                         \

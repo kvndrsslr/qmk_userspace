@@ -2,7 +2,7 @@
 
 /* Board specific configuration for the moonlander. The shared tap-hold setup
  * (TAPPING_TERM, PERMISSIVE_HOLD, CHORDAL_HOLD, FLOW_TAP_TERM,
- * SPECULATIVE_HOLD, TAPPING_TERM_PER_KEY, unicode modes) lives in
+ * SPECULATIVE_HOLD, TAPPING_TERM_PER_KEY) lives in
  * users/kvndrsslr/config.h, which QMK includes before this file. */
 
 #pragma once

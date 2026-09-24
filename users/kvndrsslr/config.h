@@ -32,7 +32,10 @@
 
 /* ----------------------------- shared features ---------------------------- */
 #define ENABLE_COMPILE_KEYCODE /* QK_MAKE, used on the mouse layer */
-#define UNICODE_SELECTED_MODES UNICODE_MODE_MACOS, UNICODE_MODE_LINUX, UNICODE_MODE_WINCOMPOSE
+
+/* Space the keycodes that a macro sends out: the umlaut dead keys need the host
+ * to see the dead key and the letter as separate events. */
+#define TAP_CODE_DELAY 10
 
 #ifndef __ASSEMBLER__
 #    include "layout.h"
