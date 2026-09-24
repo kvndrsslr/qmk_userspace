@@ -9,3 +9,5 @@
 UNICODE_ENABLE = no
 UNICODEMAP_ENABLE = yes
 AUDIO_ENABLE = no
+# combos from the forked userspace (combos.inc)
+COMBO_ENABLE = yes
