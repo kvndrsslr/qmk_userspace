@@ -169,7 +169,8 @@ enum layers {
 #define LAYER_UBSE BASE_LAYER(QWERTY_L1, QWERTY_L2, QWERTY_L3, QWERTY_R1, QWERTY_R2, QWERTY_R3)
 #define LAYER_UQGM BASE_LAYER(QGML_L1, QGML_L2, QGML_L3, QGML_R1, QGML_R2, QGML_R3)
 
-// Mouse / media. Everything is on the right hand and the right thumb keys.
+// Mouse / media. The mouse and the transport keys are on the right hand and the right
+// thumb keys; brightness is the inner pair of the left hand's outer bottom row.
 #define LAYER_USYM                                                                        \
     /* l01-l07 | r01-r07 */                                                               \
     _______, _______, _______, _______, _______, _______, _______,                         \
@@ -184,7 +185,7 @@ enum layers {
     _______, _______, _______, _______, _______, _______, _______,                         \
     _______, MS_LEFT, MS_DOWN, MS_UP, MS_RGHT, _______, _______,                           \
     /* l28-l32 | r28-r32 */                                                               \
-    _______, _______, _______, _______, _______,                                           \
+    _______, _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,                       \
     KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_STOP, KC_MEDIA_NEXT_TRACK, _______, \
     /* l33, le1, re1, r33 */                                                              \
     _______, _______, QK_MAKE, _______,                                                  \
