@@ -171,6 +171,13 @@ enum layers {
 
 // Mouse / media. The mouse and the transport keys are on the right hand and the right
 // thumb keys; brightness is the inner pair of the left hand's outer bottom row.
+//
+// Those two are F13/F14 rather than KC_BRIGHTNESS_* on purpose: macOS only takes
+// display brightness from its own keyboard driver, so a consumer-page brightness
+// usage from this board is ignored, and an event tap never even sees it (no CGEvent
+// is created). kxdesk binds the plain keys and steps the panel instead - that is what
+// its `display brightness up|down` is for. kanata used to hide this by re-emitting
+// every key through the Karabiner virtual HID keyboard, which macOS does honour.
 #define LAYER_USYM                                                                        \
     /* l01-l07 | r01-r07 */                                                               \
     _______, _______, _______, _______, _______, _______, _______,                         \
@@ -185,7 +192,7 @@ enum layers {
     _______, _______, _______, _______, _______, _______, _______,                         \
     _______, MS_LEFT, MS_DOWN, MS_UP, MS_RGHT, _______, _______,                           \
     /* l28-l32 | r28-r32 */                                                               \
-    _______, _______, _______, KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,                       \
+    _______, _______, _______, KC_SCRL, KC_PAUS,                                             \
     KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_STOP, KC_MEDIA_NEXT_TRACK, _______, \
     /* l33, le1, re1, r33 */                                                              \
     _______, _______, QK_MAKE, _______,                                                  \
